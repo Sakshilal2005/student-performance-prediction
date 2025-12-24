@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Performance Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Student Performance Prediction</h2>
+
+    <form action="/predict" method="post">
+        <input type="number" name="hours" placeholder="Hours Studied"
+       value="{{ hours if hours is defined else '' }}" required>
+
+<input type="number" name="attendance" placeholder="Attendance (%)"
+       value="{{ attendance if attendance is defined else '' }}" required>
+
+<input type="number" name="prev_score" placeholder="Previous Score"
+       value="{{ prev_score if prev_score is defined else '' }}" required>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <h3>Predicted Final Score: {{ prediction }}</h3>
+    {% endif %}
+</div>
+
+</body>
+</html>
