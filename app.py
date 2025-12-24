@@ -17,6 +17,8 @@ def predict():
     result = model.predict([[hours, attendance, prev_score]])
     return render_template("index.html", prediction=round(result[0], 2),hours=hours,attendance=attendance,prev_score=prev_score)
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
+
+
 
